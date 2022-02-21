@@ -1,0 +1,225 @@
+.header{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    background-color: #220646;
+    height: 60px;
+    padding: 10px;
+    
+}
+.h4{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    color: white;
+}
+.mainwrap{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 2%;
+}
+.menucontent{
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;    
+    background-size: cover;
+    width: 100px;
+    height: 100px;  
+    padding: 10%; 
+    margin: 30px 7px;
+    
+}
+.productName{
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 1.0rem;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);  
+    word-break: break-all;
+}
+
+.productDescription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.7rem;
+    padding-top: 1%;
+    text-decoration: none;
+}
+.productImage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.imagediv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 10%;
+    
+}
+
+.productPrice{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-top: 1%;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+
+@media screen and (min-width: 1280px) {
+    .menucontent{
+        width: 100px;
+        height: 100px;
+        margin: 0px;
+        padding: 5%;
+    }
+    .productName{
+        font-size: 0.8rem;
+    }
+    .productDescription{
+        font-size: 0.6rem;
+    }
+    .productPrice{
+        font-size: 0.7rem;
+    }
+    .productImage{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .menucontent{
+        width: 100px;
+        height: 100px;
+        margin: 0px;
+        padding: 6%;
+    }
+    .productName{
+        font-size: 0.8rem;
+    }
+    .productDescription{
+        font-size: 0.6rem;
+    }
+    .productPrice{
+        font-size: 0.7rem;
+    }
+    .productImage{
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .menucontent{
+        width: 100px;
+        height: 100px;
+        margin: 0px;
+        padding: 10%;
+    }
+    .productName{
+        font-size: 0.8rem;
+    }
+    .productDescription{
+        font-size: 0.6rem;
+    }
+    .productPrice{
+        font-size: 0.7rem;
+    }
+    .productImage{
+        width: 150px;
+        height: 150px;
+    }
+}
+@media screen and (min-width: 540px){
+    .menucontent{
+        width: 100px;
+        height: 100px;
+        padding: 3rem 4rem;
+    }
+    .productName{
+        font-size: 1rem;
+    }
+    .productDescription{
+        font-size: 0.8rem;
+    }
+    .productPrice{
+        font-size: 0.9rem;
+    }
+    .productImage{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 767px){
+    .menucontent{
+        width: 100px;
+        height: 100px;
+        padding: 3rem 3.5rem;
+    }
+    .productName{
+        font-size: 1rem;
+    }
+    .productDescription{
+        font-size: 0.8rem;
+    }
+    .productPrice{
+        font-size: 0.9rem;
+    }
+    .productImage{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 376px){
+    .menucontent{
+        width: 100px;
+        height: 100px;
+        padding: 4rem 35%;
+    }
+    .productName{
+        font-size: 1.2rem;
+    }
+    .productDescription{
+        font-size: 0.7rem;
+    }
+    .productPrice{
+        font-size: 1.1rem;
+    }
+    .productImage{
+        width: 200px;
+        height: 200px;
+    }
+}

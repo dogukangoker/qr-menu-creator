@@ -1,0 +1,136 @@
+.loadingText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+.loading {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    font-weight: bolder;
+    width: 100%;
+    background-color: #220646;
+    height: 60px;
+    color: white;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding-right: 20px;
+}
+.category {
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: black;
+    background-size: cover;
+    padding: 10px;
+    width: 150px;
+    height: 150px;
+    margin: 10% 5%;
+    border-radius: 10px;
+}
+
+.categoryName {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-top: 60%;
+    text-decoration: none;
+    margin-top: 15%;
+    color: rgba(255, 255, 255, 0.8);
+}
+.category:hover {
+    cursor: pointer;
+}
+@media screen and (max-width: 280px) {
+    .category {
+        width: 80px;
+        height: 80px;
+        margin: 10% 10px;
+    }
+    .categoryName {
+        font-size: 0.8rem;
+    }
+}
+@media screen and (max-width: 360px) {
+    .category {
+        width: 120px;
+        height: 120px;
+        margin: 10% 0.5rem;
+    }
+    .categoryName {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 530px) {
+    .category {
+        width: 110px;
+        height: 110px;
+        margin: 10% 0.7rem;
+    }
+    .categoryName {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 810px) {
+    .category {
+        width: 140px;
+        height: 140px;
+        margin: 10% 0.5rem;
+    }
+    .categoryName {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,55 @@
+.addButton{
+    position: absolute;
+    right: 0;
+    margin-right: 15rem;
+
+}
+.table{
+    width: 90%;
+}
+
+.tableId{
+    width: 10%;
+}
+
+.tableImage{
+    width: 10%;
+}
+
+thead, tr{
+    text-align: center;
+}
+tr:hover{
+    background-color: #8a8a8a;
+}
+
+tr td {
+    padding: 5px;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 60px;
+    background-color: #220646;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+.addButton{
+    position: absolute;
+    right: 0;
+    margin-right: 10rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}

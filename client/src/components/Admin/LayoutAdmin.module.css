@@ -1,0 +1,104 @@
+.sidebar{
+    width: 20vw;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #220646;
+    overflow-x: hidden;
+}
+
+.toolbar{
+    height: 60px;
+    background-color: #220646;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.logo img{
+    width: 50%;
+    height: 50%;
+}
+
+.information{
+    height: 100%;
+    background-color: #220646;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navigation{
+    height: 100%;
+    background-color: #220646;
+    color: #fff;
+    text-align: center;
+}
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;    
+}
+
+.list{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.text{
+    padding-left: 10px;
+}
+
+.navigation ul li {
+    text-decoration: none;
+    padding-top: 20px;
+}
+
+.navigation ul li a{
+    padding: 20px 60px;
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+.navigation ul li a:hover {
+    font-weight: bolder;
+}
+
+.mainContent{
+    margin-left: 20vw;
+    margin-top: 1vw;
+}
+
+.logout{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 10%;
+    width: 20vw;
+    background-color: #15012E;
+    color: #fff;
+    text-align: center;
+}
+
+.logout a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.logoutlist{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 25px;
+}
