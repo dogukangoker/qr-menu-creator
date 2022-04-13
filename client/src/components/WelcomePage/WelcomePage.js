@@ -5,37 +5,37 @@ import { Link } from "react-router-dom";
 
 export default function WelcomePage() {
   const [category, setCategory] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [infoMsg, setInfoMsg] = useState("");
-  const getCategoryData = async () => {
-    setLoading(true);
-    setInfoMsg("Sayfa yükleniyor...");
-    try {
-      let data = await axios.get(
-        "http://44.201.48.125:5000/category/listcategory"
-      );
-      setCategory(data.data.categories);
-      setLoading(false);
-      setInfoMsg("");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+
+  function timeout(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
   useEffect(() => {
+    let isMounted = true;
+
+    const getCategoryData = async () => {
+      await timeout(500);
+      await axios
+        .get("http://44.201.48.125:5000/category/listcategory")
+        .then((res) => {
+          setCategory(res.data.categories);
+        });
+      console.log(category);
+    };
     getCategoryData();
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
   return (
     <>
-      {loading ? (
-        <div className={style.loadingText}>
-          {infoMsg}
-          <div className={style.loading}></div>
-        </div>
-      ) : (
+      {category && (
         <div>
           <div className={style.header}>
             <h5>KATEGORİLER</h5>
           </div>
+          <button onClick={() => console.log(category)}>tıkla</button>
           <div className={style.wrap}>
             {category.map((categories, index) => {
               return (
@@ -50,6 +50,11 @@ export default function WelcomePage() {
                     }}
                     className={style.category}
                   >
+                    <button
+                      onClick={() => console.log(categories.category_slug)}
+                    >
+                      tıkla
+                    </button>
                     <div className={style.categoryName}>
                       {categories.category_name}
                     </div>
