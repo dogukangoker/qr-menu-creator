@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  Container,
   Button,
   TextField,
   Alert,
@@ -11,13 +10,9 @@ import {
 import style from "./AddProduct.module.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import FormControl from "@mui/material/FormControl";
 import axios from "axios";
 const AddProduct = () => {
   const [productName, setProductName] = useState("");
-  const [productCategory, setProductCategory] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productImage, setProductImage] = useState("");
   const [productPrice, setProductPrice] = useState("");
@@ -49,11 +44,11 @@ const AddProduct = () => {
 
   const handleSubmit = () => {
     if (
-      productName == "" ||
-      selectedCategory == "" ||
-      productDescription == "" ||
-      productImage == "" ||
-      productPrice == ""
+      productName === "" ||
+      selectedCategory === "" ||
+      productDescription === "" ||
+      productImage === "" ||
+      productPrice === ""
     ) {
       console.log("hata");
     } else if (productName.match(/\d/)) {
@@ -61,7 +56,7 @@ const AddProduct = () => {
     } else {
       try {
         axios
-          .post("/api/product/addproduct", {
+          .post("http://44.201.48.125:5000/product/addproduct", {
             product_name: productName,
             product_category: selectedCategory,
             product_description: productDescription,
