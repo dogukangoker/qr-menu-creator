@@ -35,7 +35,6 @@ export default function WelcomePage() {
           <div className={style.header}>
             <h5>KATEGORİLER</h5>
           </div>
-          <button onClick={() => console.log(category)}>tıkla</button>
           <div className={style.wrap}>
             {category.map((categories, index) => {
               return (
@@ -50,11 +49,6 @@ export default function WelcomePage() {
                     }}
                     className={style.category}
                   >
-                    <button
-                      onClick={() => console.log(categories.category_slug)}
-                    >
-                      tıkla
-                    </button>
                     <div className={style.categoryName}>
                       {categories.category_name}
                     </div>
