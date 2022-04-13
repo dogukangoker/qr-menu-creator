@@ -4,6 +4,25 @@ import Logger from "../Logger.js";
 
 const router = express.Router();
 
+function createSlug(text) {
+  var trMap = {
+    çÇ: "c",
+    ğĞ: "g",
+    şŞ: "s",
+    üÜ: "u",
+    ıİ: "i",
+    öÖ: "o",
+  };
+  for (var key in trMap) {
+    text = text.replace(new RegExp("[" + key + "]", "g"), trMap[key]);
+  }
+  return text
+    .replace(/[^-a-zA-Z0-9\s]+/gi, "") // remove non-alphanumeric chars
+    .replace(/\s/gi, "-") // convert spaces to dashes
+    .replace(/[-]+/gi, "-") // trim repeated dashes
+    .toLowerCase();
+}
+
 router.post("/addproduct", async (req, res) => {
   try {
     console.log(req.body);
@@ -24,6 +43,7 @@ router.post("/addproduct", async (req, res) => {
       product_description,
       product_image,
       product_price,
+      product_category_slug: createSlug(product_category),
     });
     Logger.info(`${product_name} ürünü oluşturuldu.`);
     return res.status(201).json(createdProduct);

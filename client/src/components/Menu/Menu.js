@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function Menu() {
-  let id = useParams();
+  let slug = useParams();
 
   const [menu, setMenu] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -32,7 +32,7 @@ function Menu() {
       </div>
       <div className={style.mainwrap}>
         {menu.map((product, index) => {
-          if (product.product_category === id.id) {
+          if (product.product_category_slug === slug) {
             return (
               <div key={product._id} className={style.menucontent}>
                 <div className={style.imagediv}>

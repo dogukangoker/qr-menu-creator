@@ -20,7 +20,6 @@ export default function WelcomePage() {
         .then((res) => {
           setCategory(res.data.categories);
         });
-      console.log(category);
     };
     getCategoryData();
     return () => {
@@ -41,7 +40,7 @@ export default function WelcomePage() {
                 <Link
                   key={categories._id}
                   className={style.link}
-                  to={categories.category_name}
+                  to={categories.category_slug}
                 >
                   <div
                     style={{
