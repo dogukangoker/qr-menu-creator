@@ -5,6 +5,7 @@ import userRouter from "./Routes/userRouter.js";
 import productRouter from "./Routes/productRouter.js";
 import categoryRouter from "./Routes/categoryRouter.js";
 import cors from "cors";
+import Logger from "./Logger.js";
 
 dotenv.config();
 
@@ -22,6 +23,6 @@ app.use("/", (req, res) => {
 app.listen(process.env.PORT || 5000, () => {
   mongoose
     .connect(process.env.DB_STRING)
-    .then(() => console.log("Veritabanı bağlantısı başarılı."))
+    .then(() => Logger.log("[VERİTABANI] Bağlantı başarılı."))
     .catch((err) => console.log(err));
 });
