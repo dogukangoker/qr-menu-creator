@@ -12,9 +12,11 @@ const Admin = () => {
 
   const getCategoryData = () => {
     try {
-      axios.get("/api/category/listcategory").then((res) => {
-        setCategory(res.data.categories);
-      });
+      axios
+        .get("http://44.201.48.125:5000/category/listcategory")
+        .then((res) => {
+          setCategory(res.data.categories);
+        });
     } catch (e) {
       console.log(e);
     }
@@ -22,7 +24,7 @@ const Admin = () => {
 
   const getProductData = () => {
     try {
-      axios.get("/api/product/listproduct").then((res) => {
+      axios.get("http://44.201.48.125:5000/product/listproduct").then((res) => {
         setProduct(res.data.products);
       });
     } catch (e) {
@@ -31,7 +33,7 @@ const Admin = () => {
   };
   const getUserData = () => {
     try {
-      axios.get("/api/user/listuser").then((res) => {
+      axios.get("http://44.201.48.125:5000/user/listuser").then((res) => {
         setUser(res.data.users);
       });
     } catch (e) {

@@ -47,7 +47,9 @@ const ListProduct = () => {
 
   const getCategoryData = async () => {
     try {
-      let data = await axios.get("/api/category/listcategory");
+      let data = await axios.get(
+        "http://44.201.48.125:5000/category/listcategory"
+      );
       setCategory(data.data.categories);
     } catch (e) {
       console.log(e);
@@ -56,7 +58,9 @@ const ListProduct = () => {
   useEffect(() => {
     const getMenuData = async () => {
       try {
-        let data = await axios.get("/api/product/listproduct");
+        let data = await axios.get(
+          "http://44.201.48.125:5000/product/listproduct"
+        );
         setMenu(data.data.products);
       } catch (e) {
         console.log(e);
@@ -73,7 +77,9 @@ const ListProduct = () => {
     if (!productId) return;
     if (dialogText === "Onaylıyorum") {
       try {
-        let data = await axios.post("/api/product/delete/" + productId);
+        let data = await axios.post(
+          "http://44.201.48.125:5000/product/delete/" + productId
+        );
         console.log(data);
         setEditable(true);
         getCategoryData();
@@ -107,13 +113,16 @@ const ListProduct = () => {
       setError("Fiyat bölümüne sadece rakam girmelisiniz.");
     } else {
       try {
-        let data = await axios.post("/api/product/update/" + productId, {
-          product_name,
-          product_price,
-          product_description,
-          product_category,
-          product_image,
-        });
+        let data = await axios.post(
+          "http://44.201.48.125:5000/product/update/" + productId,
+          {
+            product_name,
+            product_price,
+            product_description,
+            product_category,
+            product_image,
+          }
+        );
         console.log(data);
         setEditable(true);
         getCategoryData();

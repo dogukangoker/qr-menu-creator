@@ -26,10 +26,13 @@ const User = () => {
       setError("Kullanıcı adı ve parola boş olamaz.");
     }
     try {
-      let data = await axios.post("/api/user/update/" + userId, {
-        username: userName,
-        password: userPassword,
-      });
+      let data = await axios.post(
+        "http://44.201.48.125:5000/user/update/" + userId,
+        {
+          username: userName,
+          password: userPassword,
+        }
+      );
       console.log(data);
       getUserData();
       setUserId("");
@@ -42,7 +45,7 @@ const User = () => {
 
   const addNewUser = () => {
     axios
-      .post("/api/user/signup", {
+      .post("http://44.201.48.125:5000/user/signup", {
         username: userName,
         password: userPassword,
       })
@@ -61,7 +64,7 @@ const User = () => {
     if (userId === "") return;
     if (dialogText == "Onaylıyorum") {
       try {
-        axios.post("/api/user/delete/" + userId);
+        axios.post("http://44.201.48.125:5000/user/delete/" + userId);
         setOpenDeleteDialog(false);
         setError("");
         setUserId("");
@@ -77,7 +80,7 @@ const User = () => {
 
   const getUserData = async () => {
     try {
-      let data = await axios.get("/api/user/listuser");
+      let data = await axios.get("http://44.201.48.125:5000/user/listuser");
       setUser(data.data.users);
     } catch (e) {
       console.log(e);

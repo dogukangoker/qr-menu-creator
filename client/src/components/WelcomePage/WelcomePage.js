@@ -11,7 +11,9 @@ export default function WelcomePage() {
     setLoading(true);
     setInfoMsg("Sayfa yükleniyor...");
     try {
-      let data = await axios.get("/api/category/listcategory");
+      let data = await axios.get(
+        "http://44.201.48.125:5000/category/listcategory"
+      );
       setCategory(data.data.categories);
       setLoading(false);
       setInfoMsg("");

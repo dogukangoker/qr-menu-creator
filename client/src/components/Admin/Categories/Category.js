@@ -29,7 +29,7 @@ const Category = () => {
     if (categoryId === "") return;
     if (dialogText == "Onaylıyorum") {
       try {
-        axios.post("/api/category/delete/" + categoryId);
+        axios.post("http://44.201.48.125:5000/category/delete/" + categoryId);
         setOpenDeleteDialog(false);
         setError("");
         setCategoryId("");
@@ -43,7 +43,9 @@ const Category = () => {
 
   const getCategoryData = async () => {
     try {
-      let data = await axios.get("/api/category/listcategory");
+      let data = await axios.get(
+        "http://44.201.48.125:5000/category/listcategory"
+      );
       setCategory(data.data.categories);
     } catch (e) {
       console.log(e);
@@ -55,10 +57,13 @@ const Category = () => {
       setError("Lütfen bütün alanları doldurun.");
     } else {
       try {
-        let data = await axios.post("/api/category/addcategory", {
-          category_name: categoryName,
-          category_image: categoryImage,
-        });
+        let data = await axios.post(
+          "http://44.201.48.125:5000/category/addcategory",
+          {
+            category_name: categoryName,
+            category_image: categoryImage,
+          }
+        );
         setAddOpenDialog(false);
         setError("");
         setCategoryImage("");
@@ -77,11 +82,14 @@ const Category = () => {
       setError("Kategori adı sadece harflerden oluşmalıdır!");
     } else {
       try {
-        let data = await axios.post("/api/category/update/" + categoryId, {
-          category_name: categoryName,
-          category_image: categoryImage,
-          category_slug: categoryName.toLowerCase().replace(/\s+/g, "-"),
-        });
+        let data = await axios.post(
+          "http://44.201.48.125:5000/category/update/" + categoryId,
+          {
+            category_name: categoryName,
+            category_image: categoryImage,
+            category_slug: categoryName.toLowerCase().replace(/\s+/g, "-"),
+          }
+        );
         setEditOpenDialog(false);
         setError("");
         setCategoryName("");

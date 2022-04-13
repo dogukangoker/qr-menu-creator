@@ -11,7 +11,9 @@ function Menu() {
   const [categories, setCategories] = useState([]);
   const getData = async () => {
     try {
-      let data = await axios.get("/api/product/listproduct");
+      let data = await axios.get(
+        "http://44.201.48.125:5000/product/listproduct"
+      );
       setMenu(data.data.products);
     } catch (e) {
       console.log(e);
