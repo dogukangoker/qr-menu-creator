@@ -32,7 +32,6 @@ const ListProduct = () => {
   const [productsPerPage, setProductsPerPage] = useState(5);
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
-    console.log(e.target.value);
   };
   function handleCategoryChange(e) {
     setListCategory(e.target.value);
@@ -80,7 +79,6 @@ const ListProduct = () => {
         let data = await axios.post(
           "http://44.201.48.125:5000/product/delete/" + productId
         );
-        console.log(data);
         setEditable(true);
         getCategoryData();
         setDialogText("");
@@ -123,7 +121,6 @@ const ListProduct = () => {
             product_image,
           }
         );
-        console.log(data);
         setEditable(true);
         getCategoryData();
         setProductId("");

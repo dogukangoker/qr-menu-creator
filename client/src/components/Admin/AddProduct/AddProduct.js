@@ -50,7 +50,8 @@ const AddProduct = () => {
       productImage === "" ||
       productPrice === ""
     ) {
-      console.log("hata");
+      setErrorStatus(true);
+      return;
     } else if (productName.match(/\d/)) {
       setErrorStatus(true);
     } else {

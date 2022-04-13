@@ -33,7 +33,6 @@ const User = () => {
           password: userPassword,
         }
       );
-      console.log(data);
       getUserData();
       setUserId("");
       setError("");
@@ -50,7 +49,6 @@ const User = () => {
         password: userPassword,
       })
       .then((res) => {
-        console.log(res);
         setAddOpenDialog(false);
         getUserData();
       })
