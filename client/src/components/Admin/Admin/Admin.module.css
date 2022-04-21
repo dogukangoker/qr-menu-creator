@@ -12,6 +12,20 @@
     font-weight: bold;
     color: #2f2f2f;
     margin-bottom: 1rem;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.headerText::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #2f2f2f;
+    margin-top: 0.5rem;
 }
 .boxes{
     display: flex;
@@ -33,7 +47,8 @@
     height: 10rem;
     margin: 1rem;
     border-radius: 30px;
-    background-color: #7366ff;       
+    background-color: #7366ff;    
+    box-shadow: 0px 0px 10px #7366ff ;   
 }
 .box2{
     display: flex;
@@ -45,6 +60,7 @@
     margin: 1rem;
     border-radius: 30px;
     background-color: #ff7b7b;
+    box-shadow: 0px 0px 10px #ff7b7b ;
 }
 .box3{
     display: flex;
@@ -56,6 +72,7 @@
     margin: 1rem;
     border-radius: 30px;
     background-color: #51bb25;
+    box-shadow: 0px 0px 10px #51bb25 ;
 }
 .text{
     color: white;

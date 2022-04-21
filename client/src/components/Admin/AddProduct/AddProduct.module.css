@@ -37,6 +37,10 @@
     flex-wrap: wrap;
 }
 
+.select{
+    width: 40%;
+}
+
 .textField{
     display: flex;
     flex-direction: column;
@@ -60,4 +64,28 @@
 .statusText{
     margin-top: 1%;
 
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .header{
+        margin-top: 0px;
+        width: 100%;
+    }
+    .header h1{
+        font-size: 1.4rem;
+    }
+
+    .textField{
+        width: 70%;
+    }
+    .select{
+        width: 70%;
+    }
+
+    .Button h4{
+        font-size: 1.3rem;
+    }
+    .infographic{
+        padding: 10px;
+        font-size: 0.8rem;
+    }
 }
