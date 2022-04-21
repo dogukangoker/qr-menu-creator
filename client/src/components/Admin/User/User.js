@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../../instance/AxiosInstance";
 import style from "./User.module.css";
 import { Button } from "@mui/material";
 import AddUser from "./utils/AddUser";
@@ -26,13 +26,10 @@ const User = () => {
       setError("Kullanıcı adı ve parola boş olamaz.");
     }
     try {
-      let data = await axios.post(
-        "http://44.201.48.125:5000/user/update/" + userId,
-        {
-          username: userName,
-          password: userPassword,
-        }
-      );
+      let data = await axios.post("/user/update/" + userId, {
+        username: userName,
+        password: userPassword,
+      });
       getUserData();
       setUserId("");
       setError("");
@@ -44,7 +41,7 @@ const User = () => {
 
   const addNewUser = () => {
     axios
-      .post("http://44.201.48.125:5000/user/signup", {
+      .post("/user/signup", {
         username: userName,
         password: userPassword,
       })
@@ -62,7 +59,7 @@ const User = () => {
     if (userId === "") return;
     if (dialogText == "Onaylıyorum") {
       try {
-        axios.post("http://44.201.48.125:5000/user/delete/" + userId);
+        axios.post("/user/delete/" + userId);
         setOpenDeleteDialog(false);
         setError("");
         setUserId("");
@@ -78,7 +75,7 @@ const User = () => {
 
   const getUserData = async () => {
     try {
-      let data = await axios.get("http://44.201.48.125:5000/user/listuser");
+      let data = await axios.get("/user/listuser");
       setUser(data.data.users);
     } catch (e) {
       console.log(e);

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import { TextField, Button, Divider } from "@mui/material";
 
-import axios from "axios";
+import axios from "../../instance/AxiosInstance";
 import style from "./login.module.css";
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -15,7 +15,7 @@ const Login = () => {
   };
   const handleSubmit = () => {
     axios
-      .post("http://44.201.48.125:5000/user/signin", {
+      .post("/user/signin", {
         username: username,
         password: password,
       })

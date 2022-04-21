@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import style from "./Category.module.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../../instance/AxiosInstance";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
@@ -29,7 +29,7 @@ const Category = () => {
     if (categoryId === "") return;
     if (dialogText == "Onaylıyorum") {
       try {
-        axios.post("http://44.201.48.125:5000/category/delete/" + categoryId);
+        axios.post("/category/delete/" + categoryId);
         setOpenDeleteDialog(false);
         setError("");
         setCategoryId("");
@@ -43,9 +43,7 @@ const Category = () => {
 
   const getCategoryData = async () => {
     try {
-      let data = await axios.get(
-        "http://44.201.48.125:5000/category/listcategory"
-      );
+      let data = await axios.get("/category/listcategory");
       setCategory(data.data.categories);
     } catch (e) {
       console.log(e);
@@ -57,13 +55,10 @@ const Category = () => {
       setError("Lütfen bütün alanları doldurun.");
     } else {
       try {
-        let data = await axios.post(
-          "http://44.201.48.125:5000/category/addcategory",
-          {
-            category_name: categoryName,
-            category_image: categoryImage,
-          }
-        );
+        let data = await axios.post("/category/addcategory", {
+          category_name: categoryName,
+          category_image: categoryImage,
+        });
         setAddOpenDialog(false);
         setError("");
         setCategoryImage("");
@@ -82,14 +77,11 @@ const Category = () => {
       setError("Kategori adı sadece harflerden oluşmalıdır!");
     } else {
       try {
-        let data = await axios.post(
-          "http://44.201.48.125:5000/category/update/" + categoryId,
-          {
-            category_name: categoryName,
-            category_image: categoryImage,
-            category_slug: categoryName.toLowerCase().replace(/\s+/g, "-"),
-          }
-        );
+        let data = await axios.post("/category/update/" + categoryId, {
+          category_name: categoryName,
+          category_image: categoryImage,
+          category_slug: categoryName.toLowerCase().replace(/\s+/g, "-"),
+        });
         setEditOpenDialog(false);
         setError("");
         setCategoryName("");

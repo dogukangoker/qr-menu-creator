@@ -3,7 +3,7 @@ import style from "./Admin.module.css";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import PersonIcon from "@mui/icons-material/Person";
-import axios from "axios";
+import axios from "../../../instance/AxiosInstance";
 
 const Admin = () => {
   const [category, setCategory] = useState([]);
@@ -12,11 +12,9 @@ const Admin = () => {
 
   const getCategoryData = () => {
     try {
-      axios
-        .get("http://44.201.48.125:5000/category/listcategory")
-        .then((res) => {
-          setCategory(res.data.categories);
-        });
+      axios.get("/category/listcategory").then((res) => {
+        setCategory(res.data.categories);
+      });
     } catch (e) {
       console.log(e);
     }
@@ -24,7 +22,7 @@ const Admin = () => {
 
   const getProductData = () => {
     try {
-      axios.get("http://44.201.48.125:5000/product/listproduct").then((res) => {
+      axios.get("/product/listproduct").then((res) => {
         setProduct(res.data.products);
       });
     } catch (e) {
@@ -33,7 +31,7 @@ const Admin = () => {
   };
   const getUserData = () => {
     try {
-      axios.get("http://44.201.48.125:5000/user/listuser").then((res) => {
+      axios.get("/user/listuser").then((res) => {
         setUser(res.data.users);
       });
     } catch (e) {

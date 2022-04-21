@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./Menu.module.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import axios from "../../instance/AxiosInstance";
 
 function Menu() {
   let slug = useParams();
@@ -11,9 +11,7 @@ function Menu() {
   const [categories, setCategories] = useState([]);
   const getData = async () => {
     try {
-      let data = await axios.get(
-        "http://44.201.48.125:5000/product/listproduct"
-      );
+      let data = await axios.get("/product/listproduct");
       setMenu(data.data.products);
     } catch (e) {
       console.log(e);
