@@ -113,22 +113,22 @@ const Category = () => {
     <div className={style.container}>
       <div className={style.header}>
         <h1>KATEGORİLER</h1>
-        <Button
-          className={style.addButton}
-          color="success"
-          onClick={handleClickOpenDialog}
-          variant="contained"
-        >
-          <AddCircleIcon />
-          <span
-            style={{
-              marginLeft: "10px",
-            }}
-          >
-            YENİ KATEGORİ EKLE
-          </span>
-        </Button>
       </div>
+      <Button
+        className={style.addButton}
+        color="success"
+        onClick={handleClickOpenDialog}
+        variant="contained"
+      >
+        <AddCircleIcon />
+        <span
+          style={{
+            marginLeft: "10px",
+          }}
+        >
+          YENİ KATEGORİ EKLE
+        </span>
+      </Button>
       <table className={style.table}>
         <thead>
           <tr>
@@ -183,6 +183,48 @@ const Category = () => {
           })}
         </tbody>
       </table>
+      <div className={style.mobileCategory}>
+        {currentCategories.map((item) => {
+          return (
+            <div key={item._id} className={style.mobileCategoryItem}>
+              <img src={item.category_image} alt="" />
+              <div className={style.categoryinfo}>
+                <div className={style.mobileCategoryItemText}>
+                  <h3>{item.category_name}</h3>
+                </div>
+              </div>
+              <div>
+                <Button
+                  className={style.editButton}
+                  onClick={() => {
+                    setEditOpenDialog(true);
+                    setCategoryName(item.category_name);
+                    setCategoryImage(item.category_image);
+                    setCategoryId(item._id);
+                  }}
+                  variant="contained"
+                  color="primary"
+                  startIcon={<EditIcon />}
+                >
+                  Düzenle
+                </Button>
+              </div>
+              <Button
+                className={style.deleteButton}
+                onClick={() => {
+                  setOpenDeleteDialog(true);
+                  setCategoryId(item._id);
+                }}
+                variant="contained"
+                color="secondary"
+                startIcon={<DeleteIcon />}
+              >
+                Sil
+              </Button>
+            </div>
+          );
+        })}
+      </div>
       <Pagination
         productsPerPage={productsPerPage}
         totalProducts={category.length}
