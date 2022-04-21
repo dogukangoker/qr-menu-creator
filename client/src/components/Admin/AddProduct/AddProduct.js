@@ -10,7 +10,7 @@ import {
 import style from "./AddProduct.module.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import axios from "axios";
+import axios from "../../../instance/AxiosInstance";
 const AddProduct = () => {
   const [productName, setProductName] = useState("");
   const [productDescription, setProductDescription] = useState("");
@@ -30,9 +30,7 @@ const AddProduct = () => {
   };
   const getCategoryData = async () => {
     try {
-      let data = await axios.get(
-        "http://44.201.48.125:5000/category/listcategory"
-      );
+      let data = await axios.get("/category/listcategory");
       setCategory(data.data.categories);
     } catch (e) {
       console.log(e);
@@ -57,7 +55,7 @@ const AddProduct = () => {
     } else {
       try {
         axios
-          .post("http://44.201.48.125:5000/product/addproduct", {
+          .post("/product/addproduct", {
             product_name: productName,
             product_category: selectedCategory,
             product_description: productDescription,

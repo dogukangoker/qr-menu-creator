@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./ListProduct.module.css";
-import axios from "axios";
+import axios from "../../../instance/AxiosInstance";
 import { Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -46,9 +46,7 @@ const ListProduct = () => {
 
   const getCategoryData = async () => {
     try {
-      let data = await axios.get(
-        "http://44.201.48.125:5000/category/listcategory"
-      );
+      let data = await axios.get("/category/listcategory");
       setCategory(data.data.categories);
     } catch (e) {
       console.log(e);
@@ -57,9 +55,7 @@ const ListProduct = () => {
   useEffect(() => {
     const getMenuData = async () => {
       try {
-        let data = await axios.get(
-          "http://44.201.48.125:5000/product/listproduct"
-        );
+        let data = await axios.get("/product/listproduct");
         setMenu(data.data.products);
       } catch (e) {
         console.log(e);
@@ -76,9 +72,7 @@ const ListProduct = () => {
     if (!productId) return;
     if (dialogText === "Onaylıyorum") {
       try {
-        let data = await axios.post(
-          "http://44.201.48.125:5000/product/delete/" + productId
-        );
+        let data = await axios.post("/product/delete/" + productId);
         setEditable(true);
         getCategoryData();
         setDialogText("");
@@ -111,16 +105,13 @@ const ListProduct = () => {
       setError("Fiyat bölümüne sadece rakam girmelisiniz.");
     } else {
       try {
-        let data = await axios.post(
-          "http://44.201.48.125:5000/product/update/" + productId,
-          {
-            product_name,
-            product_price,
-            product_description,
-            product_category,
-            product_image,
-          }
-        );
+        let data = await axios.post("/product/update/" + productId, {
+          product_name,
+          product_price,
+          product_description,
+          product_category,
+          product_image,
+        });
         setEditable(true);
         getCategoryData();
         setProductId("");
