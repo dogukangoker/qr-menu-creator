@@ -8,7 +8,6 @@ function Menu() {
   let slug = useParams();
 
   const [menu, setMenu] = useState([]);
-  const [categories, setCategories] = useState([]);
   const getData = async () => {
     try {
       let data = await axios.get("/product/listproduct");

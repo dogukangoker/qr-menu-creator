@@ -14,7 +14,7 @@ const LayoutAdmin = () => {
   const [state, setState] = useState(true);
   useEffect(() => {
     document.title = "Restoran Menü Yönetim Paneli";
-    return navigate("/admin/index");
+    // return navigate("/admin/index");
   }, []);
   return (
     <>

@@ -26,7 +26,7 @@ const User = () => {
       setError("Kullanıcı adı ve parola boş olamaz.");
     }
     try {
-      let data = await axios.post("/user/update/" + userId, {
+      await axios.post("/user/update/" + userId, {
         username: userName,
         password: userPassword,
       });
@@ -57,7 +57,7 @@ const User = () => {
 
   const deleteUser = () => {
     if (userId === "") return;
-    if (dialogText == "Onaylıyorum") {
+    if (dialogText === "Onaylıyorum") {
       try {
         axios.post("/user/delete/" + userId);
         setOpenDeleteDialog(false);

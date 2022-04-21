@@ -12,7 +12,6 @@ import Pagination from "./utils/Pagination";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
-  const [added, setAdded] = useState(false);
   const [openAddDialog, setAddOpenDialog] = useState(false);
   const [error, setError] = useState("");
   const [openEditDialog, setEditOpenDialog] = useState(false);
@@ -20,14 +19,13 @@ const Category = () => {
   const [categoryImage, setCategoryImage] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [dialogText, setDialogText] = useState("");
-  const [categorySlug, setCategorySlug] = useState("");
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(5);
+  const [productsPerPage] = useState(5);
 
   const deleteCategory = () => {
     if (categoryId === "") return;
-    if (dialogText == "Onaylıyorum") {
+    if (dialogText === "Onaylıyorum") {
       try {
         axios.post("/category/delete/" + categoryId);
         setOpenDeleteDialog(false);
@@ -51,7 +49,7 @@ const Category = () => {
   };
 
   const addNewCategory = async () => {
-    if (categoryName == "" || categoryImage == "") {
+    if (categoryName === "" || categoryImage === "") {
       setError("Lütfen bütün alanları doldurun.");
     } else {
       try {
@@ -71,7 +69,7 @@ const Category = () => {
 
   const editCategory = async () => {
     var regex = /\d/;
-    if (categoryName == "" || categoryImage == "") {
+    if (categoryName === "" || categoryImage === "") {
       setError("Please fill all fields");
     } else if (categoryName.match(regex)) {
       setError("Kategori adı sadece harflerden oluşmalıdır!");
