@@ -1,15 +1,6 @@
 import React, { useEffect } from "react";
 import "./components/Menu/Menu.module.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-  useLocation,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Login from "./components/Login/Login";
 import LayoutAdmin from "./components/Admin/LayoutAdmin";
 import Admin from "./components/Admin/Admin/Admin";

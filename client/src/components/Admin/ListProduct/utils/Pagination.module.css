@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 .nav{
     display: flex;
@@ -16,17 +17,24 @@
     
 }
 .li{
-    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2px;
     cursor: pointer;
+    background: #074d88;
     list-style: none;
     color: white;
     padding: 10px;
     border: #000 solid 1px;
+    border-radius: 10px;
+    height: 20px;
+    width: 20px;
 
 }
 
 .a{
     text-decoration: none;
-    color: #000;
+    color: white;
     
 }

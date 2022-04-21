@@ -72,7 +72,7 @@ const ListProduct = () => {
     if (!productId) return;
     if (dialogText === "Onaylıyorum") {
       try {
-        let data = await axios.post("/product/delete/" + productId);
+        await axios.post("/product/delete/" + productId);
         setEditable(true);
         getCategoryData();
         setDialogText("");
@@ -105,7 +105,7 @@ const ListProduct = () => {
       setError("Fiyat bölümüne sadece rakam girmelisiniz.");
     } else {
       try {
-        let data = await axios.post("/product/update/" + productId, {
+        await axios.post("/product/update/" + productId, {
           product_name,
           product_price,
           product_description,
@@ -271,6 +271,109 @@ const ListProduct = () => {
               })}
         </tbody>
       </table>
+      <div className={style.mobileProduct}>
+        {listCategory
+          ? currentProducts
+              .filter((item) => item.product_category === listCategory)
+              .map((item, index) => {
+                return (
+                  <div
+                    onClick={() =>
+                      console.log(item.product_name + " tıklandı.")
+                    }
+                    key={index}
+                    className={style.product}
+                  >
+                    <img
+                      src={item.product_image}
+                      alt="product_image"
+                      width="100"
+                      height="100"
+                    />
+                    <h5>{item.product_name}</h5>
+                    <p>{item.product_description}</p>
+                    <p>{item.product_price}</p>
+                    <Button
+                      onClick={() => {
+                        setProductName(item.product_name);
+                        setProductPrice(item.product_price);
+                        setProductDescription(item.product_description);
+                        setProductCategory(item.product_category);
+                        setProductImage(item.product_image);
+                        setProductId(item._id);
+                        setopenEditDialog(true);
+                      }}
+                      variant="contained"
+                      color="primary"
+                      startIcon={<EditIcon />}
+                    >
+                      Düzenle
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setopenDeleteDialog(true);
+                        setProductId(item._id);
+                      }}
+                      variant="contained"
+                      color="secondary"
+                      startIcon={<DeleteIcon />}
+                    >
+                      Sil
+                    </Button>
+                  </div>
+                );
+              })
+          : currentProducts.map((item, index) => {
+              return (
+                <div
+                  onClick={() => console.log(item.product_name + " tıklandı.")}
+                  key={index}
+                  className={style.product}
+                >
+                  <div>
+                    <img
+                      src={item.product_image}
+                      alt="product_image"
+                      width="100"
+                      height="100"
+                    />
+                  </div>
+                  <div className={style.productinfo}>
+                    <h5>{item.product_name}</h5>
+                    <p>{item.product_description}</p>
+                    <p>{item.product_price} TL</p>
+                    <Button
+                      onClick={() => {
+                        setProductName(item.product_name);
+                        setProductPrice(item.product_price);
+                        setProductDescription(item.product_description);
+                        setProductCategory(item.product_category);
+                        setProductImage(item.product_image);
+                        setProductId(item._id);
+                        setopenEditDialog(true);
+                      }}
+                      variant="contained"
+                      color="primary"
+                      startIcon={<EditIcon />}
+                    >
+                      Düzenle
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setopenDeleteDialog(true);
+                        setProductId(item._id);
+                      }}
+                      variant="contained"
+                      color="secondary"
+                      startIcon={<DeleteIcon />}
+                    >
+                      Sil
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+      </div>
       <Pagination
         productsPerPage={productsPerPage}
         totalProducts={menu.length}

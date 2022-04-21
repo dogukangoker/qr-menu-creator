@@ -12,7 +12,6 @@ import Pagination from "./utils/Pagination";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
-  const [added, setAdded] = useState(false);
   const [openAddDialog, setAddOpenDialog] = useState(false);
   const [error, setError] = useState("");
   const [openEditDialog, setEditOpenDialog] = useState(false);
@@ -20,14 +19,13 @@ const Category = () => {
   const [categoryImage, setCategoryImage] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [dialogText, setDialogText] = useState("");
-  const [categorySlug, setCategorySlug] = useState("");
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(5);
+  const [productsPerPage] = useState(5);
 
   const deleteCategory = () => {
     if (categoryId === "") return;
-    if (dialogText == "Onaylıyorum") {
+    if (dialogText === "Onaylıyorum") {
       try {
         axios.post("/category/delete/" + categoryId);
         setOpenDeleteDialog(false);
@@ -51,7 +49,7 @@ const Category = () => {
   };
 
   const addNewCategory = async () => {
-    if (categoryName == "" || categoryImage == "") {
+    if (categoryName === "" || categoryImage === "") {
       setError("Lütfen bütün alanları doldurun.");
     } else {
       try {
@@ -71,7 +69,7 @@ const Category = () => {
 
   const editCategory = async () => {
     var regex = /\d/;
-    if (categoryName == "" || categoryImage == "") {
+    if (categoryName === "" || categoryImage === "") {
       setError("Please fill all fields");
     } else if (categoryName.match(regex)) {
       setError("Kategori adı sadece harflerden oluşmalıdır!");
@@ -115,22 +113,22 @@ const Category = () => {
     <div className={style.container}>
       <div className={style.header}>
         <h1>KATEGORİLER</h1>
-        <Button
-          className={style.addButton}
-          color="success"
-          onClick={handleClickOpenDialog}
-          variant="contained"
-        >
-          <AddCircleIcon />
-          <span
-            style={{
-              marginLeft: "10px",
-            }}
-          >
-            YENİ KATEGORİ EKLE
-          </span>
-        </Button>
       </div>
+      <Button
+        className={style.addButton}
+        color="success"
+        onClick={handleClickOpenDialog}
+        variant="contained"
+      >
+        <AddCircleIcon />
+        <span
+          style={{
+            marginLeft: "10px",
+          }}
+        >
+          YENİ KATEGORİ EKLE
+        </span>
+      </Button>
       <table className={style.table}>
         <thead>
           <tr>
@@ -185,6 +183,48 @@ const Category = () => {
           })}
         </tbody>
       </table>
+      <div className={style.mobileCategory}>
+        {currentCategories.map((item) => {
+          return (
+            <div key={item._id} className={style.mobileCategoryItem}>
+              <img src={item.category_image} alt="" />
+              <div className={style.categoryinfo}>
+                <div className={style.mobileCategoryItemText}>
+                  <h3>{item.category_name}</h3>
+                </div>
+              </div>
+              <div>
+                <Button
+                  className={style.editButton}
+                  onClick={() => {
+                    setEditOpenDialog(true);
+                    setCategoryName(item.category_name);
+                    setCategoryImage(item.category_image);
+                    setCategoryId(item._id);
+                  }}
+                  variant="contained"
+                  color="primary"
+                  startIcon={<EditIcon />}
+                >
+                  Düzenle
+                </Button>
+              </div>
+              <Button
+                className={style.deleteButton}
+                onClick={() => {
+                  setOpenDeleteDialog(true);
+                  setCategoryId(item._id);
+                }}
+                variant="contained"
+                color="secondary"
+                startIcon={<DeleteIcon />}
+              >
+                Sil
+              </Button>
+            </div>
+          );
+        })}
+      </div>
       <Pagination
         productsPerPage={productsPerPage}
         totalProducts={category.length}

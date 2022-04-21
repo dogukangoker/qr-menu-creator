@@ -89,11 +89,13 @@ const AddProduct = () => {
         <Divider />
         <TextField
           required
+          placeholder="Ürün Adı"
           onChange={(e) => setProductName(e.target.value)}
           className={style.textField}
-          placeholder="Ürün adı girin"
+          readOnly={true}
         />
         <Select
+          placeholder="Kategori Seçiniz"
           id="demo-simple-select"
           value={selectedCategory}
           onChange={handleChange}

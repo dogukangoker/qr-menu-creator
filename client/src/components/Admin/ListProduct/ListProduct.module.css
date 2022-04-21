@@ -46,6 +46,10 @@ tr td {
     padding: 10px;
     text-align: center;
 }
+
+.mobileProduct{
+    display: none;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -53,4 +57,29 @@ tr td {
     justify-content: center;
     width: 100%;
     height: 100%;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .table{
+        display: none;
+    }
+    .mobileProduct{
+        display: block;
+    }
+    .product{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .productinfo{
+        margin-left: 10px;
+    }
+    .header{
+        width: 425px;
+    }
+    .pagination{
+        margin-bottom: 20px;
+    }
 }
