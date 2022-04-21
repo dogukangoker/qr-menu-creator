@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import style from "./LayoutAdmin.module.css";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
@@ -7,16 +7,21 @@ import HomeIcon from "@mui/icons-material/Home";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
+import { HiOutlineMenu } from "react-icons/hi";
 
 const LayoutAdmin = () => {
   let navigate = useNavigate();
+  const [state, setState] = useState(true);
   useEffect(() => {
     document.title = "Restoran Menü Yönetim Paneli";
     return navigate("/admin/index");
   }, []);
   return (
     <>
-      <div className={style.sidebar}>
+      <div onClick={() => setState(!state)} className={style.mobileNavbar}>
+        <HiOutlineMenu color="white" size={36} />
+      </div>
+      <div className={state ? `${style.sidebar}` : `${style.active}`}>
         <div className={style.toolbar}>
           <div className={style.logo}>
             <img
@@ -27,8 +32,7 @@ const LayoutAdmin = () => {
           <div className={style.information}>
             <h4 className={style.title}>Restaurant Menü Yönetim Paneli</h4>
           </div>
-          <div className={style.navigation}>
-            <div className={style.mobileNavbar}>X</div>
+          <div className={state ? `${style.navigation}` : ` ${style.active}`}>
             <ul>
               <li>
                 <Link to="/admin/index">
@@ -70,15 +74,15 @@ const LayoutAdmin = () => {
                   </div>
                 </Link>
               </li>
+              <li>
+                <Link to="/">
+                  <div className={style.list}>
+                    <ExitToAppIcon />
+                    <div className={style.text}>Çıkış Yap</div>
+                  </div>
+                </Link>
+              </li>
             </ul>
-          </div>
-          <div className={style.logout}>
-            <Link to="/">
-              <div className={style.logoutlist}>
-                <ExitToAppIcon />
-                <div className={style.text}>Çıkış</div>
-              </div>
-            </Link>
           </div>
         </div>
       </div>
