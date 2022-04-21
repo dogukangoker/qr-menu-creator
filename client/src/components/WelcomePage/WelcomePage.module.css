@@ -92,26 +92,6 @@
 .category:hover {
     cursor: pointer;
 }
-@media screen and (max-width: 280px) {
-    .category {
-        width: 80px;
-        height: 80px;
-        margin: 10% 10px;
-    }
-    .categoryName {
-        font-size: 0.8rem;
-    }
-}
-@media screen and (max-width: 360px) {
-    .category {
-        width: 120px;
-        height: 120px;
-        margin: 10% 0.5rem;
-    }
-    .categoryName {
-        font-size: 1rem;
-    }
-}
 
 @media screen and (min-width: 530px) {
     .category {
@@ -134,3 +114,20 @@
         font-size: 1rem;
     }
 }
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    /* CSS */
+    .category{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        padding: 11px;
+        margin: 10% 15px;
+    }
+    .categoryName{
+        font-size: 0.9rem;
+    }
+    
+  }

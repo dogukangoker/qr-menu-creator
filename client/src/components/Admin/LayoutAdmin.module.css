@@ -102,3 +102,37 @@
     align-items: center;
     padding-top: 25px;
 }
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+    .sidebar{
+        width: 15%;
+    }
+    .mobileNavbar{
+        display: flex;
+    }
+    .sidebar:hover{
+        width: 50%;
+        transition: ease-in-out 1s width;
+    }
+
+    .navigation{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+    .information{display: none;}
+
+    @keyframes width {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+        
+    }
+    
+}
