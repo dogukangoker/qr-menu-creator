@@ -32,7 +32,7 @@ function Menu() {
       </div>
       <div className={style.mainwrap}>
         {menu.map((product, index) => {
-          if (product.product_category_slug === slug) {
+          if (product.product_category_slug === slug.slug) {
             return (
               <div key={product._id} className={style.menucontent}>
                 <div className={style.imagediv}>

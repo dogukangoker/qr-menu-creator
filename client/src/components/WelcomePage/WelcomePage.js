@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../instance/AxiosInstance";
 import style from "./WelcomePage.module.css";
 import { Link } from "react-router-dom";
 
@@ -15,11 +15,9 @@ export default function WelcomePage() {
 
     const getCategoryData = async () => {
       await timeout(500);
-      await axios
-        .get("http://44.201.48.125:5000/category/listcategory")
-        .then((res) => {
-          setCategory(res.data.categories);
-        });
+      await axios.get("/category/listcategory").then((res) => {
+        setCategory(res.data.categories);
+      });
     };
     getCategoryData();
     return () => {

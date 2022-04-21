@@ -49,7 +49,7 @@ const Admin = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.headerText}>
-        <h1>Admin Sayfası</h1>
+        <h1>Yönetici Paneli</h1>
       </div>
       <div className={style.boxes}>
         <div className={style.box}>
