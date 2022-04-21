@@ -94,10 +94,10 @@ const AddProduct = () => {
           placeholder="Ürün adı girin"
         />
         <Select
-          style={{ width: "40%" }}
           id="demo-simple-select"
           value={selectedCategory}
           onChange={handleChange}
+          className={style.select}
         >
           {category.map((item, index) => {
             return (
@@ -131,7 +131,7 @@ const AddProduct = () => {
           variant="contained"
           color="success"
         >
-          EKLE
+          <h4>Ekle</h4>
         </Button>
       </div>
       <div className={style.statusText}>
@@ -156,7 +156,7 @@ const AddProduct = () => {
           ""
         )}
       </div>
-      <Typography variant="span">
+      <Typography className={style.infographic} variant="span">
         {" "}
         NOT : Yukarıda bulunan alanların tamamı doldurulmak zorundadır.Herhangi
         bir alanın eksik olması durumunda sistem hiçbir işlem yapmayacaktır.{" "}
